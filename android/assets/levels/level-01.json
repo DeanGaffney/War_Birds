@@ -1,0 +1,16 @@
+{
+	// probably better to construct islands using a random formula (ie proceduraly generated)  but this
+	// is here to show how it could be done manually.
+	islands: [
+		{	name: islandBig,		x:   -3,		y:   -4,	rotation:  0, state:	0},
+		{	name: islandSmall,		x:    4,		y:    1,	rotation:  0, state:	0},
+		{	name: islandTiny,		x:   -2,		y:    5,	rotation: 90, state:	0},
+	],
+	enemies: [
+		{	name: green,			x:	  0,		y:  10,		rotation:   0, state:	0},
+		{	name: yellow,			x:	  3,		y:	 8,		rotation:   0, state:	0},
+		{	name: white,			x:	  -1,		y:	 8,		rotation:   0, state:	0},
+	],
+	name: 1,
+	length: 10,
+}
