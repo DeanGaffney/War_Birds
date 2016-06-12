@@ -1,0 +1,25 @@
+{
+    com.badlogic.gdx.graphics.g2d.BitmapFont: { 
+        default-font: { file: default.fnt } 
+    },
+    com.badlogic.gdx.graphics.Color: {
+        green: { a: 1, b: 0, g: 1, r: 0 },
+        white: { a: 1, b: 1, g: 1, r: 1 },
+        red: { a: 1, b: 0, g: 0, r: 1 },
+        black: { a: 1, b: 0, g: 0, r: 0 },
+        gray: { a: 1, b: 0.3, g: 0.3, r: 0.3 }
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+        reset: { down: reset-dn, up: reset-up },
+        play: { down: play-dn, up: play-up },
+        options: { down: options-dn, up: options-up },
+        cancel: { down: cancel-dn, up: cancel-up },
+        save: { down: save-dn, up: save-up },
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.Image: {
+        background: { drawable: background },
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+        default: { font: default-font, fontColor: white }
+    },
+}
