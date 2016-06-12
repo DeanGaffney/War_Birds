@@ -30,7 +30,6 @@ public class Level extends AbstractGameObject {
     	}
     };
     
-    
 	/**
 	 * Simple class to store generic object in level.
 	 */
@@ -48,17 +47,18 @@ public class Level extends AbstractGameObject {
 	public static class LevelMap {
 		ArrayList<LevelObject>	islands;
 		ArrayList<LevelObject>	enemies;
+		ArrayList<LevelObject>	shields;
 		String					name;
 		float					length;
+		
 	}
 
-	public Level() {
+	public Level(String filename) {
 		super(null);
-		init();
-
+		init(filename);
 	}
 
-	private void init() {
+	private void init(String filename) {
 
 		// player
 		player = new Player(this);
@@ -68,7 +68,7 @@ public class Level extends AbstractGameObject {
 		levelDecoration = new LevelDecoration(this);
 
 		// read and parse level map (form a json file)
-		String map = Gdx.files.internal("levels/level-01.json").readString();
+		String map = Gdx.files.internal(filename).readString();
 
 		Json json = new Json();
 		json.setElementType(LevelMap.class, "enemies", LevelObject.class);
@@ -87,6 +87,12 @@ public class Level extends AbstractGameObject {
 			LevelObject p = (LevelObject) e;
 			Gdx.app.log(TAG, "type = " + p.name + "\tx = " + p.x + "\ty =" + p.y);
 			levelDecoration.addEnemy(p.name,p.x,p.y,p.rotation);
+		}
+		Gdx.app.log(TAG, "shields . . . ");
+		for (Object e : data.shields) {
+			LevelObject p = (LevelObject) e;
+			Gdx.app.log(TAG, "type = " + p.name + "\tx = " + p.x + "\ty =" + p.y);
+			levelDecoration.addShield(p.name,p.x,p.y,p.rotation);
 		}
 
 		position.set(0, 0);
@@ -111,15 +117,10 @@ public class Level extends AbstractGameObject {
 	}
 
 	public void render(SpriteBatch batch) {
-
 		levelDecoration.render(batch);
 		player.render(batch);
 		for (Bullet bullet: bullets)
 			bullet.render(batch);
-		for (AbstractEnemy enemy: enemies)
-			enemy.render(batch);
-	
-		//System.out.println("Bullets " + bullets.size);
 	}
 
 }

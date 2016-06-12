@@ -8,7 +8,7 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
 public class DesktopLauncher {
 
-	private static boolean	rebuildAtlas		= true;
+	private static boolean	rebuildAtlas		= false;
 	private static boolean	drawDebugOutline	= false;
 
 	public static void main (String[] arg) {
@@ -19,6 +19,7 @@ public class DesktopLauncher {
 			settings.maxHeight = 1024;
 			settings.debug = drawDebugOutline;
 			TexturePacker.process(settings, "assets-raw/images", "../android/assets/images", "game.atlas");
+			TexturePacker.process(settings, "assets-raw/images-ui", "../android/assets/images","ui.atlas");
 		}
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

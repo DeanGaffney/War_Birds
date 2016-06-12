@@ -14,7 +14,8 @@ public class Bullet extends AbstractGameObject implements Poolable {
 	public static final String TAG = Player.class.getName();
 	
 	private TextureRegion region;
-	
+	public boolean enemyBullet;	//used to make bullets enemy or player bullets.True if enemy fired bullet.
+	public float angle;
 	Bullet(Level level) {
 		super(level);
 		init();
@@ -27,11 +28,14 @@ public class Bullet extends AbstractGameObject implements Poolable {
 
 		// Center image on game object
 		origin.set(dimension.x / 2, dimension.y / 2);
-		
+		bounds.set(0, 0, dimension.x, dimension.y);
+		hitBox.set(position.x,position.y,bounds.width,bounds.height);
+		enemyBullet = false;
 		velocity.y = Constants.BULLET_SPEED;
+		
 	}
 	
-
+	
 	@Override
 	public void render(SpriteBatch batch) {
 		batch.draw(region.getTexture(), position.x-origin.x, position.y-origin.y, origin.x, origin.y, 
@@ -42,7 +46,8 @@ public class Bullet extends AbstractGameObject implements Poolable {
 
 	@Override
 	public void reset() {
-		System.out.println("sdfsd");
+		enemyBullet = false;
 		state = State.ACTIVE;
+		
 	}
 }
